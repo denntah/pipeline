@@ -15,6 +15,13 @@ class App implements IRunnable {
     public function __construct(Context $ctx, $path = null) {
         $this->ctx = $ctx;
         $this->path = $path;
+
+        // default (not found) middleware
+        $this->use(function($next) {
+            $next();
+            if (!$this->hasResult())
+                $this->status(404);
+        });
     }
 
     public static function init($settings = null) {
@@ -33,11 +40,8 @@ class App implements IRunnable {
 
         while ($this->next()) { }
 
-        if ($this->path === null) {
-            if (!$this->ctx->hasResult())
-                $this->ctx->status(404);
+        if ($this->path === null)
             $this->ctx->render();
-        }
     }
 
     public function next() {
