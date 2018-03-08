@@ -75,7 +75,7 @@ class App implements IRunnable {
 
     private function exec($path, $func, $method) {
         if (Uri::matches($this->path . $path, $method)) {
-            $this->ctx->args = Uri::getArguments($this->path . $path, $_SERVER['REQUEST_URI']);
+            $this->ctx->args = Uri::getArguments($this->path . $path);
             $this->add($func);
         }
     }

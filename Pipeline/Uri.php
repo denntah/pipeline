@@ -29,9 +29,9 @@ class Uri {
         return preg_replace('/({\w+})/i','(\w+)', $path);
     }
 
-    public static function getArguments($path, $subject) {
+    public static function getArguments($path) {
         $keys = self::getKeys($path);
-        $values = self::getValues(self::getPattern($path), $subject);
+        $values = self::getValues(self::getPattern($path), $_SERVER['REQUEST_URI']);
         
         $arguments = array();
 
