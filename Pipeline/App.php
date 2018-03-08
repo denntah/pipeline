@@ -73,6 +73,14 @@ class App implements IRunnable {
         $this->exec($path, $func, 'POST');
     }
 
+    public function put($path, $func) {
+        $this->exec($path, $func, 'PUT');
+    }
+
+    public function delete($path, $func) {
+        $this->exec($path, $func, 'DELETE');
+    }
+
     private function exec($path, $func, $method) {
         if (Uri::matches($this->path . $path, $method)) {
             $this->ctx->args = Uri::getArguments($this->path . $path);
