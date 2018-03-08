@@ -90,7 +90,7 @@ Will keep information about the current request and can send responses back to t
 ### view
 ```function view($view, $data = null)```
 
-```$view``` path to the view to be pressented.
+```$view``` path to the view to be presented.
 
 ```$data``` if any, will be extracted and available in the view-document.
 
